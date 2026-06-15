@@ -1,1 +1,1 @@
-# thudo-weico-jsc
+# ThuDo Weico JSC
