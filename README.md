@@ -1,1 +1,1 @@
-# ThuDo Weico JSC
+# ThuDo
