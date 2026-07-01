@@ -193,11 +193,15 @@ export const translations = {
       standards: "Áp dụng tiêu chuẩn quốc tế trong khảo sát, thiết kế và quản lý dự án",
       trusted:
         "Được tin tưởng bởi các Chủ đầu tư lớn như Bộ Xây dựng, Công ty Cấp nước địa phương, và các tổ chức tài chính quốc tế",
+      showLess: "Thu gọn",
+      showMore: "Xem thêm",
     },
     projects: {
       title: "Dự án của chúng tôi",
       viewProject: "Xem chi tiết",
       category: "Danh mục",
+      subtitle: "Khám phá danh mục các dự án hoàn thành và đang thực hiện của chúng tôi",
+      showMore: "Xem thêm",
     },
     news: {
       title: "Tư vấn & Hợp đồng",
@@ -259,7 +263,7 @@ export const translations = {
     },
     home: {
       title: "Thudo Weico",
-      subtitle: "Thu do Water Environment and Infrastructure Engineering Joint Stock Company",
+      subtitle: "Công ty Cổ phần Nước Môi trường và Hạ tầng Kỹ thuật Thủ đô",
       cta: "Explore Services",
       highlights: [
         {
@@ -274,7 +278,7 @@ export const translations = {
       ],
       aboutSection: "About Thudo Weico",
       aboutSectionDesc:
-        "Thudo Water Environment and Infrastructure Joint Stock Company, established in 2006, is a 100% privately owned enterprise specializing in water supply and sewerage consulting, environmental sanitation, transportation, and technical infrastructure.",
+        "Công ty Cổ phần Nước Môi trường và Hạ tầng Kỹ thuật Thủ đô (Thudo Weico), established in 2006, is a 100% privately owned enterprise specializing in water supply and sewerage consulting, environmental sanitation, transportation, and technical infrastructure.",
       learnMore: "Learn More",
       recentProjects: "Recent Projects",
       recentProjectsDesc: "Explore our latest projects",
@@ -286,7 +290,7 @@ export const translations = {
     },
     about: {
       title: "About Us",
-      company: "THUDO WATER ENVIRONMENT AND INFRASTRUCTURE JOINT STOCK COMPANY",
+      company: "CÔNG TY CỔ PHẦN NƯỚC MÔI TRƯỜNG VÀ HẠ TẦNG KỸ THUẬT THỦ ĐÔ",
       vision: "Vision",
       mission: "Mission",
       established: "Established",
@@ -316,18 +320,18 @@ export const translations = {
       introductionHeading: "Introduction to Thudo Weico",
       introductionSubheading: "Learn more about the company, mission, and core values",
       introductionDescription:
-        "Thudo Water Environment and Infrastructure Joint Stock Company (Thudo Weico), established in February 2006, is a 100% privately owned joint stock company with full financial and operational independence. The company specializes in consulting services for water supply and sewerage, environmental sanitation, transportation, and technical infrastructure projects across Vietnam.",
+        "Công ty Cổ phần Nước Môi trường và Hạ tầng Kỹ thuật Thủ đô (Thudo Weico), established in February 2006, is a 100% privately owned joint stock company with full financial and operational independence. The company specializes in consulting services for water supply and sewerage, environmental sanitation, transportation, and technical infrastructure projects across Vietnam.",
       introductionOffice:
-        "Our representative office is located at 5th Floor, Building No. 41, Pham Tuan Tai Street, Nghia Do Ward, Hanoi, Vietnam.",
+        "Our representative office is located at 5th Floor, Building No. 41, Phạm Tuấn Tài Street, Nghĩa Đô Ward, Hà Nội, Vietnam.",
       introductionExperience:
         "With a team of well-trained, highly qualified professionals and the strategic leadership of an experienced Board of Directors, Thudo Weico has developed strong capabilities in consulting and surveying, design and construction supervision, and contract and project management for water supply, sewerage, sanitation, transportation, and infrastructure works throughout the country.",
       introductionReputation:
         "Over the years, Thudo Weico has built a solid reputation for technical excellence, reliability, and professional service delivery. The company operates under a certified Quality Management System ISO 9001:2008 issued by QUACERT, ensuring that every project meets the highest standards of quality and efficiency.",
       introductionCeo:
-        "General Director: Mr. Nguyen Manh Thang - Master of Engineering, Civil Engineer specializing in Water Supply and Drainage",
-      companyNameValue: "Thu do Water Environment and Infrastructure Engineering Joint Stock Company",
-      addressValue: "No. 6, Lane 347/16, Co Nhuế Street, Dong Ngac Ward, Hanoi, Vietnam",
-      ceoValue: "Nguyen Manh Thang",
+        "General Director: Mr. Nguyễn Mạnh Thắng - Master of Engineering, Civil Engineer specializing in Water Supply and Drainage",
+      companyNameValue: "Công ty Cổ phần Nước Môi trường và Hạ tầng Kỹ thuật Thủ đô",
+      addressValue: "No. 6, Lane 347/16, Co Nhuế Street, Dong Ngac Ward, Hà Nội, Vietnam",
+      ceoValue: "Nguyễn Mạnh Thắng",
       statusValue: "Active",
       visionValue:
         "Become the most professional service provider in the field of consulting and supplying water industry equipment.",
@@ -446,11 +450,15 @@ export const translations = {
       standards: "Apply international standards in surveying, design, and project management",
       trusted:
         "Trusted by major investors including Ministry of Construction, local water companies, and international financial organizations",
+      showLess: "Show Less",
+      showMore: "Show More",
     },
     projects: {
       title: "Our Projects",
       viewProject: "View Details",
       category: "Category",
+      subtitle: "Explore our portfolio of completed and ongoing projects",
+      showMore: "Show More",
     },
     news: {
       title: "Consulting & Contracts",
@@ -489,7 +497,7 @@ export const translations = {
       phonePlaceholder: "Enter your phone number",
       messagePlaceholder: "Enter your message",
       selectDepartment: "Select department",
-      locationOffice: "5th Floor, Building No. 41, Pham Tuan Tai Street, Nghia Do Ward, Hanoi",
+      locationOffice: "5th Floor, Building No. 41, Phạm Tuấn Tài Street, Nghĩa Đô Ward, Hà Nội",
       workingOffice: "8am to 5pm, Monday to Friday",
     },
     footer: {
@@ -532,7 +540,7 @@ export const translations = {
     },
     about: {
       title: "ກ່ຽວກັບພວກເຮົາ",
-      company: "THUDO WATER ENVIRONMENT AND INFRASTRUCTURE JOINT STOCK COMPANY",
+      company: "CÔNG TY CỔ PHẦN NƯỚC MÔI TRƯỜNG VÀ HẠ TẦNG KỸ THUẬT THỦ ĐÔ",
       vision: "ວິໄສທັດ",
       mission: "ພາລະກິດ",
       established: "ສ້າງຕັ້ງ",
@@ -683,11 +691,15 @@ export const translations = {
         "ໄດ້ຮັບຄວາມໄວ້ວາງໃຈຈາກນັກລົງທຶນລາຍໃຫຍ່ ລວມທັງກະຊວງກໍ່ສ້າງ, ບໍລິສັດນ້ຳປະປາທ້ອງຖິ່ນ ແລະ ອົງການຈັດຕັ້ງທາງການເງິນສາກົນ",
       standards: "ນຳໃຊ້ມາດຕະຖານສາກົນໃນການສຳຫຼວດ, ການອອກແບບ ແລະ ການຄຸ້ມຄອງໂຄງການ",
       trusted: "ໄດ້ຮັບຄວາມໄວ້ວາງໃຈຈາກນັກລົງທຶນລາຍໃຫຍ່ ລວມທັງກະຊວງກໍ່ສ້າງ, ບໍລິສັດນ້ຳປະປາທ້ອງຖິ່ນ ແລະ ອົງການຈັດຕັ້ງທາງການເງິນສາກົນ",
+      showLess: "ສະແດງໜ້ອຍລົງ",
+      showMore: "ເບິ່ງເພີ່ມເຕີມ",
     },
     projects: {
       title: "ໂຄງການຂອງພວກເຮົາ",
       viewProject: "ເບິ່ງລາຍລະອຽດ",
       category: "ໝວດໝູ່",
+      subtitle: "ສຳຫຼວດລາຍການໂຄງການທີ່ສຳເລັດ ແລະ ກຳລັງດຳເນີນການຂອງພວກເຮົາ",
+      showMore: "ເບິ່ງເພີ່ມເຕີມ",
     },
     news: {
       title: "ການໃຫ້ຄຳປຶກສາ ແລະ ສັນຍາ",
