@@ -172,7 +172,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Services Grid Section */}
-        <section id="services-grid" className="py-16 md:py-24 bg-background relative z-10 -mt-8">
+        <section id="services-grid" className="py-16 md:py-24 bg-[#f8f9fa] relative z-10 -mt-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
               <span className="text-emerald-600 font-bold uppercase tracking-wider text-xs block">
@@ -197,7 +197,7 @@ export default function ServicesPage() {
                   >
                     <div>
                       {/* Icon */}
-                      <div className="w-14 h-14 bg-emerald-500/5 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#0B3534] group-hover:text-white transition-all duration-300 shadow-sm shadow-emerald-500/10">
+                      <div className="w-14 h-14 bg-emerald-500/10 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#0B3534] group-hover:text-white transition-all duration-300 shadow-sm shadow-emerald-500/10">
                         <IconComponent size={24} />
                       </div>
 
@@ -255,7 +255,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Why Choose Us Section */}
-        <section className="py-16 md:py-24 bg-slate-50/60 border-y border-slate-100">
+        <section className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
               <span className="text-emerald-600 font-bold uppercase tracking-wider text-xs block">
@@ -271,7 +271,7 @@ export default function ServicesPage() {
               {stats.map((stat, idx) => (
                 <div
                   key={idx}
-                  className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm text-center hover:shadow-md transition-all duration-300 group hover:-translate-y-0.5"
+                  className="bg-[#f8f9fa] p-8 rounded-2xl border border-slate-100 shadow-sm text-center hover:shadow-md transition-all duration-300 group hover:-translate-y-0.5"
                 >
                   <div className="text-4xl md:text-5xl font-black text-emerald-600 mb-3 tracking-tight group-hover:scale-103 transition-transform duration-300">
                     {stat.number}

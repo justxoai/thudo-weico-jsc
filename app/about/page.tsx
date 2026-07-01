@@ -103,7 +103,7 @@ export default function AboutPage() {
         </section>
 
         {/* Company Info Overview Section */}
-        <section id="overview" className="py-16 md:py-24 bg-background relative z-10 -mt-10">
+        <section id="overview" className="py-16 md:py-24 bg-[#f8f9fa] relative z-10 -mt-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               
@@ -123,8 +123,8 @@ export default function AboutPage() {
                 {/* Office & CEO Details */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                   {/* Office detail card */}
-                  <div className="flex items-start gap-4 p-4 bg-slate-50/70 border border-slate-100 rounded-xl hover:shadow-sm transition-all duration-300">
-                    <div className="p-3 bg-[#0B3534] text-white rounded-lg flex-shrink-0 shadow-sm shadow-[#0B3534]/20">
+                  <div className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl hover:shadow-sm transition-all duration-300">
+                    <div className="p-3 bg-emerald-500/10 text-emerald-600 rounded-lg flex-shrink-0">
                       <Building2 size={20} />
                     </div>
                     <div>
@@ -134,8 +134,8 @@ export default function AboutPage() {
                   </div>
 
                   {/* Leader detail card */}
-                  <div className="flex items-start gap-4 p-4 bg-slate-50/70 border border-slate-100 rounded-xl hover:shadow-sm transition-all duration-300">
-                    <div className="p-3 bg-sky-500 text-white rounded-lg flex-shrink-0 shadow-sm shadow-sky-500/20">
+                  <div className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl hover:shadow-sm transition-all duration-300">
+                    <div className="p-3 bg-emerald-500/10 text-emerald-600 rounded-lg flex-shrink-0">
                       <UserCheck size={20} />
                     </div>
                     <div>
@@ -186,12 +186,12 @@ export default function AboutPage() {
                 </div>
 
                 {/* Rank 1 Certification Card */}
-                <div className="bg-gradient-to-br from-[#EBF1FF] to-[#E2EBFC] text-slate-800 p-8 rounded-2xl border border-blue-100 shadow-sm relative overflow-hidden flex items-start gap-5 hover:shadow-md transition-shadow duration-300">
-                  <div className="p-3 bg-blue-500/10 text-blue-600 rounded-xl flex-shrink-0 shadow-sm">
+                <div className="bg-gradient-to-br from-emerald-50/50 to-emerald-100/30 text-slate-800 p-8 rounded-2xl border border-emerald-100/50 shadow-sm relative overflow-hidden flex items-start gap-5 hover:shadow-md transition-shadow duration-300">
+                  <div className="p-3 bg-emerald-500/10 text-emerald-600 rounded-xl flex-shrink-0 shadow-sm">
                     <Award size={24} />
                   </div>
                   <div className="space-y-1">
-                    <span className="text-blue-600 font-bold uppercase tracking-wider text-[10px] block">
+                    <span className="text-emerald-600 font-bold uppercase tracking-wider text-[10px] block">
                       {t("about.certificateLabel")}
                     </span>
                     <h3 className="text-lg font-extrabold text-slate-900 leading-tight">
@@ -209,7 +209,7 @@ export default function AboutPage() {
         </section>
 
         {/* Core Values Section */}
-        <section className="py-16 md:py-24 bg-slate-50/60 border-y border-slate-100">
+        <section className="py-16 md:py-24 bg-white border-y border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <span className="text-center block text-emerald-600 font-bold uppercase tracking-wider text-xs mb-3">
               {t("about.valuesSubtitle")}
@@ -227,9 +227,9 @@ export default function AboutPage() {
                 return (
                   <div
                     key={idx}
-                    className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start"
+                    className="bg-[#f8f9fa] p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start"
                   >
-                    <div className="p-3.5 bg-slate-50 text-emerald-600 rounded-xl mb-6 border border-slate-100 flex-shrink-0">
+                    <div className="p-3 bg-emerald-500/10 text-emerald-600 rounded-xl mb-6 flex-shrink-0">
                       <IconComponent size={24} />
                     </div>
                     <h3 className="text-lg font-bold text-slate-900 mb-3">{value.title}</h3>
@@ -242,7 +242,7 @@ export default function AboutPage() {
         </section>
 
         {/* Certificates & Licenses Section */}
-        <section className="py-16 md:py-24 bg-background">
+        <section className="py-16 md:py-24 bg-[#f8f9fa]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               
@@ -260,8 +260,8 @@ export default function AboutPage() {
 
                 <div className="space-y-4">
                   {/* Item 1 */}
-                  <div className="flex items-start gap-4 p-5 bg-[#EEF2F6]/60 border border-slate-100 rounded-xl hover:shadow-sm transition-all duration-300">
-                    <div className="p-3 bg-blue-500/10 text-blue-600 rounded-lg flex-shrink-0">
+                  <div className="flex items-start gap-4 p-5 bg-white border border-slate-100 rounded-xl hover:shadow-sm transition-all duration-300">
+                    <div className="p-3 bg-emerald-500/10 text-emerald-600 rounded-lg flex-shrink-0">
                       <FileText size={20} />
                     </div>
                     <div>
@@ -271,7 +271,7 @@ export default function AboutPage() {
                   </div>
 
                   {/* Item 2 */}
-                  <div className="flex items-start gap-4 p-5 bg-[#EEF2F6]/60 border border-slate-100 rounded-xl hover:shadow-sm transition-all duration-300">
+                  <div className="flex items-start gap-4 p-5 bg-white border border-slate-100 rounded-xl hover:shadow-sm transition-all duration-300">
                     <div className="p-3 bg-emerald-500/10 text-emerald-600 rounded-lg flex-shrink-0">
                       <Compass size={20} />
                     </div>
@@ -282,8 +282,8 @@ export default function AboutPage() {
                   </div>
 
                   {/* Item 3 */}
-                  <div className="flex items-start gap-4 p-5 bg-[#EEF2F6]/60 border border-slate-100 rounded-xl hover:shadow-sm transition-all duration-300">
-                    <div className="p-3 bg-teal-500/10 text-teal-600 rounded-lg flex-shrink-0">
+                  <div className="flex items-start gap-4 p-5 bg-white border border-slate-100 rounded-xl hover:shadow-sm transition-all duration-300">
+                    <div className="p-3 bg-emerald-500/10 text-emerald-600 rounded-lg flex-shrink-0">
                       <CheckCircle2 size={20} />
                     </div>
                     <div>

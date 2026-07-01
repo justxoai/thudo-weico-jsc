@@ -28,8 +28,8 @@ export default function ContactPage() {
   // Form State
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
     email: "",
-    subject: "",
     message: ""
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -43,25 +43,25 @@ export default function ContactPage() {
       icon: MapPin,
       title: t("contact.office"),
       content: t("contact.locationOffice"),
-      colorClass: "bg-[#0B3534] shadow-sm shadow-[#0B3534]/20",
+      colorClass: "bg-emerald-500/10 text-emerald-600",
     },
     {
       icon: Phone,
       title: t("contact.phone"),
       content: "024. 37. 555. 766",
-      colorClass: "bg-emerald-600 shadow-sm shadow-emerald-600/20",
+      colorClass: "bg-emerald-500/10 text-emerald-600",
     },
     {
       icon: Mail,
       title: t("contact.email"),
       content: "thudoweico2006@gmail.com",
-      colorClass: "bg-sky-500 shadow-sm shadow-sky-500/20",
+      colorClass: "bg-emerald-500/10 text-emerald-600",
     },
     {
       icon: Clock,
       title: t("contact.workingHours"),
       content: t("contact.workingOffice"),
-      colorClass: "bg-teal-500 shadow-sm shadow-teal-500/20",
+      colorClass: "bg-emerald-500/10 text-emerald-600",
     },
   ]
 
@@ -94,8 +94,8 @@ export default function ContactPage() {
       setIsSubmitted(true)
       setFormData({
         name: "",
+        phone: "",
         email: "",
-        subject: "",
         message: ""
       })
       // Clear success message after 5 seconds
@@ -119,7 +119,7 @@ export default function ContactPage() {
     <div className="min-h-screen flex flex-col bg-background antialiased font-sans">
       <Header />
 
-      <main className="flex-1">
+      <main className="flex-grow">
         {/* Hero Section with Sloped Cut */}
         <section className="relative min-h-[500px] md:min-h-[600px] flex items-center justify-start text-white overflow-hidden bg-[#031d1c]">
           <div className="absolute inset-0 z-0">
@@ -164,7 +164,7 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Info & Form Section */}
-        <section id="contact-section" className="py-16 md:py-24 bg-background relative z-10 -mt-8">
+        <section id="contact-section" className="py-16 md:py-24 bg-[#f8f9fa] relative z-10 -mt-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               
@@ -187,13 +187,13 @@ export default function ContactPage() {
                     return (
                       <div
                         key={idx}
-                        className="flex items-start gap-4 p-5 bg-slate-50/70 border border-slate-100 rounded-2xl hover:shadow-sm transition-all duration-300"
+                        className="flex items-start gap-4 p-5 bg-white border border-slate-100 rounded-2xl hover:shadow-sm transition-all duration-300"
                       >
-                        <div className={`p-3 text-white rounded-xl flex-shrink-0 ${info.colorClass}`}>
+                        <div className={`p-3 rounded-xl flex-shrink-0 ${info.colorClass}`}>
                           <IconComponent size={18} />
                         </div>
                         <div>
-                          <h4 className="font-extrabold text-slate-800 text-xs uppercase tracking-wider mb-1">
+                          <h4 className="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1">
                             {info.title}
                           </h4>
                           <p className="text-xs text-slate-650 leading-relaxed font-normal">{info.content}</p>
@@ -223,7 +223,7 @@ export default function ContactPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Name */}
                       <div className="space-y-1.5">
-                        <label htmlFor="name" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                        <label htmlFor="name" className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
                           {t("contact.name")}
                         </label>
                         <input
@@ -237,42 +237,42 @@ export default function ContactPage() {
                         />
                       </div>
 
-                      {/* Email */}
+                      {/* Phone */}
                       <div className="space-y-1.5">
-                        <label htmlFor="email" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                          Email
+                        <label htmlFor="phone" className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                          {t("contact.phone")}
                         </label>
                         <input
-                          id="email"
-                          type="email"
+                          id="phone"
+                          type="tel"
                           required
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder={t("contact.emailPlaceholder")}
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          placeholder={t("contact.phonePlaceholder")}
                           className="w-full px-4 py-3 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500/25 focus:border-emerald-500 bg-slate-50/50 shadow-sm transition-all"
                         />
                       </div>
                     </div>
 
-                    {/* Subject */}
+                    {/* Email */}
                     <div className="space-y-1.5">
-                      <label htmlFor="subject" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                        {t("contact.subject")}
+                      <label htmlFor="email" className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                        Email
                       </label>
                       <input
-                        id="subject"
-                        type="text"
+                        id="email"
+                        type="email"
                         required
-                        value={formData.subject}
-                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        placeholder={t("contact.subjectPlaceholder")}
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder={t("contact.emailPlaceholder")}
                         className="w-full px-4 py-3 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500/25 focus:border-emerald-500 bg-slate-50/50 shadow-sm transition-all"
                       />
                     </div>
 
                     {/* Message */}
                     <div className="space-y-1.5">
-                      <label htmlFor="message" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                      <label htmlFor="message" className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
                         {t("contact.message")}
                       </label>
                       <textarea
@@ -310,7 +310,7 @@ export default function ContactPage() {
         </section>
 
         {/* Map Section */}
-        <section id="contact-map" className="py-16 md:py-20 bg-slate-50/60 border-t border-slate-100">
+        <section id="contact-map" className="py-16 md:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="text-center space-y-2">
               <span className="text-emerald-600 font-bold uppercase tracking-wider text-xs block">
@@ -334,7 +334,7 @@ export default function ContactPage() {
 
               {/* Floating Address Badge */}
               <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm p-4 rounded-xl border border-white/50 shadow-lg flex items-center gap-3 max-w-sm hidden sm:flex">
-                <div className="h-9 w-9 bg-[#0B3534] text-white rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                <div className="h-9 w-9 bg-emerald-500/10 text-emerald-600 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
                   <MapPin size={16} />
                 </div>
                 <div className="min-w-0">
@@ -351,7 +351,7 @@ export default function ContactPage() {
         </section>
 
         {/* FAQ Accordion Section */}
-        <section className="py-16 md:py-24 bg-background border-t border-slate-100">
+        <section className="py-16 md:py-24 bg-[#f8f9fa]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               
@@ -420,7 +420,7 @@ export default function ContactPage() {
                           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                         }`}
                       >
-                        <div className="px-5 pb-5 pt-1 text-slate-600 text-xs leading-relaxed font-normal border-t border-slate-50">
+                        <div className="px-5 pb-5 pt-1 text-slate-650 text-xs leading-relaxed font-normal border-t border-slate-50">
                           {item.answer}
                         </div>
                       </div>

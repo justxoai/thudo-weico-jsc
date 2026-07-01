@@ -150,37 +150,52 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative min-h-[85vh] flex items-center bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuAx5OuPXYnT47RGjYCEknSbC9UodXpChUNiCjrltYBbMLoGNAydQ0VXyZBTDHzBU_5Zk1fACgSoncK3Yeq2rmfeJh-a5_FHjCNifjhPSJ2_ehETL1Bs78jlVs7V6TbAST8pfQ20ZOyW_iPaUxLO2_5gX5DJwdij1gbZGYsIi1KnYU7kCVYZ9qgpdyer4dX3Y2u3DxB2gmZxODmqTunWHvfBRUTxy3wa8DEfthuRz4oov1V24pEpzD9g6Sm5UEfB9_9tRNBuIloAX_E')] bg-cover bg-center text-white py-20 overflow-hidden">
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-slate-950/75 z-0"></div>
+        <section className="relative min-h-[500px] md:min-h-[600px] flex items-center justify-start text-white overflow-hidden bg-[#031d1c]">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx5OuPXYnT47RGjYCEknSbC9UodXpChUNiCjrltYBbMLoGNAydQ0VXyZBTDHzBU_5Zk1fACgSoncK3Yeq2rmfeJh-a5_FHjCNifjhPSJ2_ehETL1Bs78jlVs7V6TbAST8pfQ20ZOyW_iPaUxLO2_5gX5DJwdij1gbZGYsIi1KnYU7kCVYZ9qgpdyer4dX3Y2u3DxB2gmZxODmqTunWHvfBRUTxy3wa8DEfthuRz4oov1V24pEpzD9g6Sm5UEfB9_9tRNBuIloAX_E"
+              alt="Thudo Weico Banner"
+              className="w-full h-full object-cover opacity-60 scale-102 transition-transform duration-1000"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#031d1c]/95 via-[#072d2b]/80 to-transparent z-10" />
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-background z-20" style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 0, 0 100%)" }} />
+          </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div className="max-w-3xl">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight drop-shadow-sm leading-tight text-white">
-                {t("home.title")}
-              </h1>
-              <p className="text-xl sm:text-2xl font-semibold opacity-95 mb-6 text-slate-200 leading-snug">
-                {t("home.subtitle")}
-              </p>
-              
-              {/* Stylized Slogan Box */}
-              <div className="border-l-4 border-emerald-500 pl-4 py-1.5 my-8 italic text-slate-300 text-lg md:text-xl font-medium tracking-wide">
-                "{t("home.slogan")}"
-              </div>
+          <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 pb-32 animate-fade-in">
+            {/* Established Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-sm">
+              <Calendar size={14} className="flex-shrink-0 animate-pulse" />
+              <span>{t("about.establishedBadge")}</span>
+            </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <Link href="/services">
-                  <Button size="lg" className="w-full sm:w-auto gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-6 rounded-md shadow-lg transition-all duration-200">
-                    {t("home.cta")}
-                    <ArrowRight size={20} />
-                  </Button>
-                </Link>
-                <Link href="/about">
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border-white text-white font-bold px-8 py-6 rounded-md transition-all duration-200">
-                    {t("home.learnMore")}
-                  </Button>
-                </Link>
-              </div>
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 max-w-3xl leading-[1.15] text-white">
+              <span className="block text-slate-100/90">{t("home.title")}</span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed mb-6 font-normal">
+              {t("home.subtitle")}
+            </p>
+
+            {/* Stylized Slogan Box */}
+            <div className="border-l-4 border-emerald-500 pl-4 py-1.5 my-8 italic text-slate-300 text-base md:text-lg font-medium tracking-wide max-w-2xl">
+              "{t("home.slogan")}"
+            </div>
+
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+              <Link href="/services">
+                <Button size="lg" className="w-full sm:w-auto gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all duration-200 text-sm">
+                  {t("home.cta")}
+                  <ArrowRight size={16} />
+                </Button>
+              </Link>
+              <Link href="/about">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border-white text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 text-sm">
+                  {t("home.learnMore")}
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
