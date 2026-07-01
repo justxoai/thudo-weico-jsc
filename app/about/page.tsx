@@ -98,15 +98,6 @@ export default function AboutPage() {
               >
                 <span>{t("about.exploreNow")}</span>
               </a>
-              <button
-                className="px-6 py-3.5 rounded-lg border border-slate-400 hover:border-white text-slate-200 hover:text-white font-bold transition-all duration-300 flex items-center gap-2 text-sm hover:bg-white/5"
-                onClick={() => {
-                  window.open("https://www.youtube.com", "_blank")
-                }}
-              >
-                <Play size={16} fill="currentColor" className="flex-shrink-0" />
-                <span>{t("about.watchVideo")}</span>
-              </button>
             </div>
           </div>
         </section>

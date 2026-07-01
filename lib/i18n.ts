@@ -110,7 +110,7 @@ export const translations = {
       projectsCount: "500+",
       projectsLabel: "Dự án",
       certificateLabel: "CHỨNG CHỈ",
-      nationalRank1: "Hạng 1 Quốc gia",
+      nationalRank1: "Hạng 1",
       nationalRank1Desc: "Khảo sát & Thiết kế Hạ tầng kỹ thuật (cấp, thoát nước)",
       valuesSubtitle: "GIÁ TRỊ CHÚNG TÔI TIN TƯỞNG",
       valuesIntro: "Năng động – Sáng tạo – Chuyên nghiệp – Gắn kết, là kim chỉ nam cho mọi hoạt động tại Thudo Weico.",
