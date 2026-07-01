@@ -1,160 +1,323 @@
 "use client"
 
+import React, { useState } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useTranslation } from "@/components/use-translation"
-import { Card } from "@/components/ui/card"
+import { useLanguage } from "@/lib/language-context"
 import { Button } from "@/components/ui/button"
-import { useState } from "react"
-import { Compass, Building2, Pencil, Briefcase, Eye, DollarSign, Leaf, FileText } from "lucide-react"
+import {
+  Compass,
+  Building2,
+  Pencil,
+  Briefcase,
+  Eye,
+  DollarSign,
+  Leaf,
+  FileText,
+  Play,
+  Award,
+  CheckCircle2,
+  Users,
+  ChevronDown,
+  ChevronUp
+} from "lucide-react"
 
 export default function ServicesPage() {
   const t = useTranslation()
+  const { language } = useLanguage()
   const [showAll, setShowAll] = useState(false)
+
+  const getServiceDetails = (key: string): string[] => {
+    const res = t(key)
+    return Array.isArray(res) ? res : []
+  }
 
   const services = [
     {
       icon: Compass,
       title: t("services.consulting"),
       desc: t("services.consultingDesc"),
-      details: t("services.consultingDetails"),
+      details: getServiceDetails("services.consultingDetails"),
     },
     {
       icon: Building2,
       title: t("services.planning"),
       desc: t("services.planningDesc"),
-      details: t("services.planningDetails"),
+      details: getServiceDetails("services.planningDetails"),
     },
     {
       icon: Pencil,
       title: t("services.construction"),
       desc: t("services.constructionDesc"),
-      details: t("services.constructionDetails"),
+      details: getServiceDetails("services.constructionDetails"),
     },
     {
       icon: Briefcase,
       title: t("services.installation"),
       desc: t("services.installationDesc"),
-      details: t("services.installationDetails"),
+      details: getServiceDetails("services.installationDetails"),
     },
     {
       icon: Eye,
       title: t("services.bidding"),
       desc: t("services.biddingDesc"),
-      details: t("services.biddingDetails"),
+      details: getServiceDetails("services.biddingDetails"),
     },
     {
       icon: DollarSign,
       title: t("services.equipment"),
       desc: t("services.equipmentDesc"),
-      details: t("services.equipmentDetails"),
+      details: getServiceDetails("services.equipmentDetails"),
     },
     {
       icon: Leaf,
       title: t("services.research"),
       desc: t("services.researchDesc"),
-      details: t("services.researchDetails"),
+      details: getServiceDetails("services.researchDetails"),
     },
     {
       icon: FileText,
       title: t("services.technology"),
       desc: t("services.technologyDesc"),
-      details: t("services.technologyDetails"),
+      details: getServiceDetails("services.technologyDetails"),
     },
   ]
 
   const displayedServices = showAll ? services : services.slice(0, 4)
 
+  const handleScrollToGrid = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    const element = document.getElementById("services-grid")
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
+  const stats = [
+    {
+      number: "18+",
+      label: t("services.experience"),
+      desc: t("services.experienceDesc"),
+    },
+    {
+      number: "30+",
+      label: t("services.staff"),
+      desc: t("services.staffDesc"),
+    },
+    {
+      number: "18+",
+      label: t("services.projects"),
+      desc: t("services.projectsDesc"),
+    },
+    {
+      number: "23/34",
+      label: t("services.provinces"),
+      desc: t("services.provincesDesc"),
+    },
+  ]
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background antialiased font-sans">
       <Header />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-primary to-secondary py-16 md:py-24 text-primary-foreground">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{t("services.title")}</h1>
-            <p className="text-lg opacity-90 max-w-2xl">{t("services.consultingDesc")}</p>
+        {/* Hero Section with Diagonal Cut */}
+        <section className="relative min-h-[500px] md:min-h-[600px] flex items-center justify-start text-white overflow-hidden bg-[#031d1c]">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/water-infrastructure-system.jpg"
+              alt="Water Infrastructure System"
+              className="w-full h-full object-cover opacity-50 scale-102 transition-transform duration-1000"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#031d1c]/95 via-[#072d2b]/80 to-transparent z-10" />
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-background z-20" style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 0, 0 100%)" }} />
+          </div>
+
+          <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 pb-32 animate-fade-in">
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-sm">
+              <Award size={14} className="flex-shrink-0 animate-pulse" />
+              <span>{t("services.badgeLabel")}</span>
+            </div>
+
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 max-w-3xl leading-[1.15]">
+              <span className="block text-slate-100/90">{t("services.title")}</span>
+              <span className="block mt-1 text-emerald-400 font-black">Thudo Weico</span>
+            </h1>
+
+            {/* Description */}
+            <p className="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed mb-10 font-normal">
+              {t("services.consultingDesc")}
+            </p>
+
+            {/* Actions */}
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="#services-grid"
+                onClick={handleScrollToGrid}
+                className="px-6 py-3.5 rounded-lg bg-emerald-400 hover:bg-emerald-500 text-[#031d1c] font-bold shadow-lg hover:shadow-emerald-400/20 transition-all duration-300 hover:-translate-y-0.5 text-sm"
+              >
+                <span>{t("services.ctaExplore")}</span>
+              </a>
+              <a
+                href="/contact"
+                className="px-6 py-3.5 rounded-lg border border-slate-400 hover:border-white text-slate-200 hover:text-white font-bold transition-all duration-300 flex items-center gap-2 text-sm hover:bg-white/5"
+              >
+                <span>{t("services.ctaContact")}</span>
+              </a>
+            </div>
           </div>
         </section>
 
-        {/* Services Grid */}
-        <section className="py-16 md:py-24 bg-background">
+        {/* Services Grid Section */}
+        <section id="services-grid" className="py-16 md:py-24 bg-background relative z-10 -mt-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+              <span className="text-emerald-600 font-bold uppercase tracking-wider text-xs block">
+                {t("services.operationLabel")}
+              </span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+                {t("services.sectionHeading")}
+              </h2>
+              <p className="text-slate-500 text-sm md:text-[15px] leading-relaxed">
+                {t("services.sectionIntro")}
+              </p>
+            </div>
+
+            {/* Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {displayedServices.map((service, idx) => {
-                const Icon = service.icon
+                const IconComponent = service.icon
                 return (
-                  <Card key={idx} className="p-6 hover:shadow-lg transition-shadow group cursor-pointer">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                      <Icon className="text-primary" size={24} />
+                  <div
+                    key={idx}
+                    className="group bg-white p-6 rounded-2xl border border-slate-100 hover:border-emerald-500/20 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
+                  >
+                    <div>
+                      {/* Icon */}
+                      <div className="w-14 h-14 bg-emerald-500/5 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#0B3534] group-hover:text-white transition-all duration-300 shadow-sm shadow-emerald-500/10">
+                        <IconComponent size={24} />
+                      </div>
+
+                      {/* Header */}
+                      <h3 className="font-extrabold text-slate-900 text-lg mb-3 group-hover:text-emerald-600 transition-colors duration-200">
+                        {service.title}
+                      </h3>
+                      <p className="text-xs text-slate-500 leading-relaxed mb-6">
+                        {service.desc}
+                      </p>
                     </div>
-                    <h3 className="font-bold text-lg mb-2">{service.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{service.desc}</p>
-                    <ul className="space-y-1">
-                      {service.details.map((detail: string, didx: number) => (
-                        <li key={didx} className="text-xs text-muted-foreground flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          <span>{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </Card>
+
+                    <div>
+                      {/* Divider */}
+                      <div className="border-t border-slate-100 my-4" />
+
+                      {/* Details list */}
+                      <ul className="space-y-2.5">
+                        {service.details.map((detail: string, didx: number) => (
+                          <li key={didx} className="text-[11px] text-slate-600 flex items-start gap-2 leading-relaxed">
+                            <CheckCircle2 size={13} className="text-emerald-500 mt-0.5 flex-shrink-0" />
+                            <span>{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 )
               })}
             </div>
 
+            {/* Toggle Button */}
             {services.length > 4 && (
-              <div className="flex justify-center mt-8">
-                <Button onClick={() => setShowAll(!showAll)} variant="outline" className="px-8 py-2">
-                  {showAll ? "Show Less" : "Show More"}
+              <div className="flex justify-center mt-12">
+                <Button
+                  onClick={() => setShowAll(!showAll)}
+                  variant="outline"
+                  className="px-8 py-5 border-slate-200 hover:border-slate-350 hover:bg-slate-50 rounded-xl text-slate-700 font-bold transition-all duration-200 flex items-center gap-2 shadow-sm text-sm"
+                >
+                  {showAll ? (
+                    <>
+                      <span>{t("services.showLess")}</span>
+                      <ChevronUp size={16} />
+                    </>
+                  ) : (
+                    <>
+                      <span>{t("services.showMore")}</span>
+                      <ChevronDown size={16} />
+                    </>
+                  )}
                 </Button>
               </div>
             )}
           </div>
         </section>
 
-        {/* Why Choose Us */}
-        <section className="py-16 md:py-24 bg-secondary/5">
+        {/* Why Choose Us Section */}
+        <section className="py-16 md:py-24 bg-slate-50/60 border-y border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-12 text-center">{t("services.whyChooseUs")}</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">18+</div>
-                <p className="font-semibold text-foreground mb-2">{t("services.experience")}</p>
-                <p className="text-sm text-muted-foreground">{t("services.experienceDesc")}</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">30+</div>
-                <p className="font-semibold text-foreground mb-2">{t("services.staff")}</p>
-                <p className="text-sm text-muted-foreground">{t("services.staffDesc")}</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">18+</div>
-                <p className="font-semibold text-foreground mb-2">{t("services.projects")}</p>
-                <p className="text-sm text-muted-foreground">{t("services.projectsDesc")}</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">23/34</div>
-                <p className="font-semibold text-foreground mb-2">{t("services.provinces")}</p>
-                <p className="text-sm text-muted-foreground">{t("services.provincesDesc")}</p>
-              </div>
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+              <span className="text-emerald-600 font-bold uppercase tracking-wider text-xs block">
+                {t("about.valuesSubtitle")}
+              </span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+                {t("services.whyChooseUs")}
+              </h2>
             </div>
 
-            <div className="bg-white rounded-lg p-8 shadow-sm border border-border">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <h3 className="font-bold text-lg text-primary mb-2">{t("services.commitment")}</h3>
-                  <p className="text-sm text-muted-foreground">{t("services.international")}</p>
+            {/* Stats Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {stats.map((stat, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm text-center hover:shadow-md transition-all duration-300 group hover:-translate-y-0.5"
+                >
+                  <div className="text-4xl md:text-5xl font-black text-emerald-600 mb-3 tracking-tight group-hover:scale-103 transition-transform duration-300">
+                    {stat.number}
+                  </div>
+                  <h4 className="font-bold text-slate-800 text-sm mb-2">{stat.label}</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed font-normal">{stat.desc}</p>
                 </div>
+              ))}
+            </div>
+
+            {/* Commitments Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Card 1 - Dark Teal Card */}
+              <div className="bg-[#0B3534] text-white p-8 rounded-2xl border border-teal-950 shadow-md relative overflow-hidden flex flex-col justify-between min-h-[220px] group">
+                <Users size={120} className="absolute right-[-20px] bottom-[-20px] text-teal-800/10 pointer-events-none" />
                 <div>
-                  <h3 className="font-bold text-lg text-primary mb-2">{t("services.internationalStandards")}</h3>
-                  <p className="text-sm text-muted-foreground">{t("services.internationalStandardsDesc")}</p>
+                  <span className="text-emerald-400 font-bold uppercase tracking-wider text-[10px] block mb-2">
+                    {t("services.commitment")}
+                  </span>
+                  <p className="text-teal-50 text-[15px] leading-relaxed font-semibold">
+                    {t("services.international")}
+                  </p>
                 </div>
+              </div>
+
+              {/* Card 2 - Light Blue Card */}
+              <div className="bg-gradient-to-br from-[#EBF1FF] to-[#E2EBFC] text-slate-800 p-8 rounded-2xl border border-blue-100 shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[220px]">
                 <div>
-                  <h3 className="font-bold text-lg text-primary mb-2">{t("services.trustProfessional")}</h3>
-                  <p className="text-sm text-muted-foreground">{t("services.trustProfessionalDesc")}</p>
+                  <span className="text-blue-600 font-bold uppercase tracking-wider text-[10px] block mb-2">
+                    {t("services.internationalStandards")}
+                  </span>
+                  <p className="text-slate-700 text-[15px] leading-relaxed font-bold">
+                    {t("services.internationalStandardsDesc")}
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 3 - White Card */}
+              <div className="bg-white text-slate-800 p-8 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[220px]">
+                <div>
+                  <span className="text-emerald-600 font-bold uppercase tracking-wider text-[10px] block mb-2">
+                    {t("services.trustProfessional")}
+                  </span>
+                  <p className="text-slate-600 text-[14px] leading-relaxed font-normal">
+                    {t("services.trustProfessionalDesc")}
+                  </p>
                 </div>
               </div>
             </div>
