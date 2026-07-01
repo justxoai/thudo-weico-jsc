@@ -149,7 +149,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative min-h-[85vh] flex items-center bg-[url('/water-infrastructure-system.jpg')] bg-cover bg-center text-white py-20 overflow-hidden">
+        <section className="relative min-h-[85vh] flex items-center bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuAx5OuPXYnT47RGjYCEknSbC9UodXpChUNiCjrltYBbMLoGNAydQ0VXyZBTDHzBU_5Zk1fACgSoncK3Yeq2rmfeJh-a5_FHjCNifjhPSJ2_ehETL1Bs78jlVs7V6TbAST8pfQ20ZOyW_iPaUxLO2_5gX5DJwdij1gbZGYsIi1KnYU7kCVYZ9qgpdyer4dX3Y2u3DxB2gmZxODmqTunWHvfBRUTxy3wa8DEfthuRz4oov1V24pEpzD9g6Sm5UEfB9_9tRNBuIloAX_E')] bg-cover bg-center text-white py-20 overflow-hidden">
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-slate-950/75 z-0"></div>
 
