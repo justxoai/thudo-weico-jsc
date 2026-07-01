@@ -18,7 +18,7 @@ const footerDict = {
     careers: "Tuyển dụng",
     library: "Thư viện điện tử",
     quickContact: "LIÊN HỆ NHANH",
-    rights: "© 2026 Thudo Water & Infrastructure Engineering. Bảo lưu mọi quyền.",
+    rights: "© 2025 Thudo Water & Infrastructure Engineering. Bảo lưu mọi quyền.",
     terms: "Điều khoản Dịch vụ",
     privacy: "Chính sách Bảo mật",
     cookies: "Cài đặt Cookie"
@@ -36,7 +36,7 @@ const footerDict = {
     careers: "Careers",
     library: "E-Library Entry",
     quickContact: "QUICK CONTACT",
-    rights: "© 2026 Thudo Water & Infrastructure Engineering. All rights reserved.",
+    rights: "© 2025 Thudo Water & Infrastructure Engineering. All rights reserved.",
     terms: "Terms of Service",
     privacy: "Privacy Policy",
     cookies: "Cookie Settings"
@@ -54,7 +54,7 @@ const footerDict = {
     careers: "ຮັບສະໝັກງານ",
     library: "ຫໍສະໝຸດເອເລັກໂຕຣນິກ",
     quickContact: "ຕິດຕໍ່ດ່ວນ",
-    rights: "© 2026 Thudo Water & Infrastructure Engineering. ສະຫງວນລິຂະສິດ.",
+    rights: "© 2025 Thudo Water & Infrastructure Engineering. ສະຫງວນລິຂະສິດ.",
     terms: "ເງື່ອນໄຂການບໍລິການ",
     privacy: "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
     cookies: "ການຕັ້ງຄ່າຄຸກກີ້"
@@ -129,16 +129,6 @@ export function Footer() {
                   {d.projects}
                 </Link>
               </li>
-              <li>
-                <span className="text-slate-500 cursor-not-allowed">
-                  {d.careers}
-                </span>
-              </li>
-              <li>
-                <span className="text-slate-500 cursor-not-allowed">
-                  {d.library}
-                </span>
-              </li>
             </ul>
           </div>
 
@@ -159,36 +149,9 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-            <div className="flex gap-4">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-slate-700 hover:text-white transition-all shadow-sm"
-              >
-                <Facebook size={18} />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-slate-700 hover:text-white transition-all shadow-sm"
-              >
-                <Youtube size={18} />
-              </a>
-            </div>
           </div>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-slate-800 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <p>{d.rights}</p>
-          <div className="flex gap-6">
-            <span className="hover:text-slate-400 cursor-pointer">{d.terms}</span>
-            <span className="hover:text-slate-400 cursor-pointer">{d.privacy}</span>
-            <span className="hover:text-slate-400 cursor-pointer">{d.cookies}</span>
-          </div>
-        </div>
+        
       </div>
     </footer>
   )
