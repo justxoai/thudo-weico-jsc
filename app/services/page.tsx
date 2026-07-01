@@ -281,46 +281,6 @@ export default function ServicesPage() {
                 </div>
               ))}
             </div>
-
-            {/* Commitments Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Card 1 - Dark Teal Card */}
-              <div className="bg-[#0B3534] text-white p-8 rounded-2xl border border-teal-950 shadow-md relative overflow-hidden flex flex-col justify-between min-h-[220px] group">
-                <Users size={120} className="absolute right-[-20px] bottom-[-20px] text-teal-800/10 pointer-events-none" />
-                <div>
-                  <span className="text-emerald-400 font-bold uppercase tracking-wider text-[10px] block mb-2">
-                    {t("services.commitment")}
-                  </span>
-                  <p className="text-teal-50 text-[15px] leading-relaxed font-semibold">
-                    {t("services.international")}
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 2 - Light Blue Card */}
-              <div className="bg-gradient-to-br from-[#EBF1FF] to-[#E2EBFC] text-slate-800 p-8 rounded-2xl border border-blue-100 shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[220px]">
-                <div>
-                  <span className="text-blue-600 font-bold uppercase tracking-wider text-[10px] block mb-2">
-                    {t("services.internationalStandards")}
-                  </span>
-                  <p className="text-slate-700 text-[15px] leading-relaxed font-bold">
-                    {t("services.internationalStandardsDesc")}
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 3 - White Card */}
-              <div className="bg-white text-slate-800 p-8 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[220px]">
-                <div>
-                  <span className="text-emerald-600 font-bold uppercase tracking-wider text-[10px] block mb-2">
-                    {t("services.trustProfessional")}
-                  </span>
-                  <p className="text-slate-600 text-[14px] leading-relaxed font-normal">
-                    {t("services.trustProfessionalDesc")}
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
       </main>

@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { ArrowRight, Phone, Mail, Clock, MapPin, Check, Droplet, Compass, Cog, ShieldCheck, Users } from "lucide-react"
-import { getProjectsByLanguage } from "@/lib/projects-data"
+import { ArrowRight, Phone, Mail, Clock, MapPin, Check, Droplet, Compass, Cog, ShieldCheck, Users, ChevronRight, X, Calendar, Briefcase } from "lucide-react"
+import { getProjectsByLanguage, projectsData } from "@/lib/projects-data"
 import { useLanguage } from "@/lib/language-context"
 import { getRandomImageForProject } from "@/lib/image-utils"
 
@@ -112,6 +112,7 @@ export default function Home() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [selectedProject, setSelectedProject] = useState<any>(null)
 
   // Get recent projects (3 most recent with dates)
   const projectsByLang = getProjectsByLanguage(language as "vi" | "en" | "lo")
@@ -365,45 +366,71 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {recentProjects.map((project) => {
-                const isActive = project.status === "Đang thực hiện" || project.statusEn === "In Progress"
+                const isProjectInProgress = project.statusEn === "In Progress" || project.status === "Đang thực hiện"
                 return (
-                  <Card
+                  <div
                     key={project.id}
-                    className="overflow-hidden hover:shadow-md transition-shadow group border border-slate-100 flex flex-col"
+                    onClick={() => setSelectedProject(project)}
+                    className="group bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-800 hover:border-emerald-500/10 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 rounded-2xl overflow-hidden flex flex-col cursor-pointer"
                   >
-                    <div className="relative overflow-hidden h-52 bg-slate-100 flex-shrink-0">
+                    {/* Image & Badge Wrapper */}
+                    <div className="relative h-52 overflow-hidden bg-slate-100 dark:bg-slate-900 flex-shrink-0">
                       <img
                         src={getDisplayImage(project) || "/placeholder.svg"}
                         alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+                        className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                       />
-                      <Badge className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 ${
-                        isActive 
-                          ? "bg-emerald-600 hover:bg-emerald-600 text-white" 
-                          : "bg-slate-700 hover:bg-slate-700 text-white"
-                      }`}>
-                        {project.status}
-                      </Badge>
+                      <div
+                        className={`absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wide backdrop-blur-sm shadow-sm ${
+                          isProjectInProgress ? "bg-sky-600/90 text-white" : "bg-emerald-600/90 text-white"
+                        }`}
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
+                        <span>{project.status}</span>
+                      </div>
                     </div>
-                    <div className="p-6 flex flex-col justify-between flex-grow">
+
+                    {/* Card Body */}
+                    <div className="p-6 flex flex-col flex-grow justify-between">
                       <div>
-                        <h3 className="font-bold text-slate-900 dark:text-white text-base mb-3 leading-snug min-h-[48px] line-clamp-2">
+                        <h3 className="font-extrabold text-slate-900 dark:text-white text-base mb-2 group-hover:text-emerald-600 transition-colors duration-205 line-clamp-2 min-h-[48px] leading-snug">
                           {project.title}
                         </h3>
-                        <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-2">
-                          <MapPin size={15} className="flex-shrink-0" />
-                          <span className="truncate">{project.location}</span>
-                        </div>
+                        <p className="text-xs text-slate-500 mb-4 line-clamp-2 leading-relaxed font-normal">
+                          {project.shortDescription}
+                        </p>
                       </div>
-                      
-                      {project.year && (
-                        <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mt-1">
-                          <Clock size={15} className="flex-shrink-0" />
-                          <span>{project.year}</span>
+
+                      <div>
+                        {/* Meta Data */}
+                        <div className="space-y-2 text-xs text-slate-500 mb-6 font-normal">
+                          <div className="flex items-center gap-2">
+                            <MapPin size={14} className="text-slate-400 flex-shrink-0" />
+                            <span className="truncate">{project.location}</span>
+                          </div>
+                          {project.year && (
+                            <div className="flex items-center gap-2">
+                              <Calendar size={14} className="text-slate-400 flex-shrink-0" />
+                              <span>{project.year}</span>
+                            </div>
+                          )}
                         </div>
-                      )}
+
+                        {/* View Button */}
+                        <Button
+                          variant="outline"
+                          className="w-full py-5 border-slate-200 hover:border-slate-350 hover:bg-slate-50 rounded-xl text-slate-700 font-bold transition-all text-xs flex items-center justify-center gap-1"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setSelectedProject(project)
+                          }}
+                        >
+                          <span>{t("projects.viewProject")}</span>
+                          <ChevronRight size={14} />
+                        </Button>
+                      </div>
                     </div>
-                  </Card>
+                  </div>
                 )
               })}
             </div>
@@ -588,6 +615,143 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Project Details Modal Frame (Project Form) */}
+        {selectedProject && (
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedProject(null)}
+          >
+            <div
+              className="bg-white dark:bg-slate-900 w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh] border border-slate-100 dark:border-slate-800 animate-in fade-in zoom-in-95 duration-200"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header Image Container */}
+              <div className="relative h-64 sm:h-76 w-full overflow-hidden flex-shrink-0">
+                <img
+                  src={getDisplayImage(selectedProject) || "/placeholder.svg"}
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover"
+                />
+                {/* Bottom Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-5 right-5 bg-black/40 hover:bg-black/60 text-white rounded-full p-2.5 transition-colors backdrop-blur-sm shadow-md"
+                >
+                  <X size={18} />
+                </button>
+
+                {/* Title & Badge Overlay */}
+                <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
+                  <span
+                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wide backdrop-blur-sm shadow-sm ${
+                      selectedProject.statusEn === "In Progress" || selectedProject.status === "Đang thực hiện"
+                        ? "bg-sky-600/90 text-white"
+                        : "bg-emerald-600/90 text-white"
+                    }`}
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
+                    <span>{selectedProject.status}</span>
+                  </span>
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-tight text-white drop-shadow-sm">
+                    {selectedProject.title}
+                  </h2>
+                </div>
+              </div>
+
+              {/* Modal Scrollable Content */}
+              <div className="p-6 sm:p-8 overflow-y-auto space-y-6 text-slate-750 dark:text-slate-350">
+                {/* Grid metadata */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Location Box */}
+                  <div className="flex items-start gap-3.5 p-4 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-2xl">
+                    <MapPin className="text-emerald-600 mt-0.5 flex-shrink-0" size={18} />
+                    <div>
+                      <div className="text-[10px] text-slate-450 dark:text-slate-400 font-bold uppercase tracking-wider">
+                        {language === "vi" ? "Vị trí" : language === "en" ? "Location" : "ទីតាំង"}
+                      </div>
+                      <div className="text-xs text-slate-850 dark:text-white font-semibold mt-0.5">{selectedProject.location}</div>
+                    </div>
+                  </div>
+
+                  {/* Timeline Box */}
+                  <div className="flex items-start gap-3.5 p-4 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-2xl">
+                    <Calendar className="text-emerald-600 mt-0.5 flex-shrink-0" size={18} />
+                    <div>
+                      <div className="text-[10px] text-slate-450 dark:text-slate-400 font-bold uppercase tracking-wider">
+                        {language === "vi" ? "Thời gian" : language === "en" ? "Timeline" : "រយៈពេល"}
+                      </div>
+                      <div className="text-xs text-slate-855 dark:text-white font-semibold mt-0.5">{selectedProject.year || "N/A"}</div>
+                    </div>
+                  </div>
+
+                  {/* Project Type Box */}
+                  <div className="flex items-start gap-3.5 p-4 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-2xl">
+                    <Briefcase className="text-emerald-600 mt-0.5 flex-shrink-0" size={18} />
+                    <div>
+                      <div className="text-[10px] text-slate-450 dark:text-slate-400 font-bold uppercase tracking-wider">
+                        {language === "vi" ? "Loại dự án" : language === "en" ? "Project Type" : "ប្រភេទដំណើរការ"}
+                      </div>
+                      <div className="text-xs text-slate-855 dark:text-white font-semibold mt-0.5">{selectedProject.details.type}</div>
+                    </div>
+                  </div>
+
+                  {/* Investor Box */}
+                  <div className="flex items-start gap-3.5 p-4 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-2xl">
+                    <Users className="text-emerald-600 mt-0.5 flex-shrink-0" size={18} />
+                    <div>
+                      <div className="text-[10px] text-slate-450 dark:text-slate-400 font-bold uppercase tracking-wider">
+                        {language === "vi" ? "Nhà đầu tư" : language === "en" ? "Investor" : "ម្ចាស់ប្រាក់"}
+                      </div>
+                      <div className="text-xs text-slate-855 dark:text-white font-semibold mt-0.5">{selectedProject.details.investor || "N/A"}</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <div className="space-y-2">
+                  <h4 className="text-[10px] text-emerald-600 font-bold uppercase tracking-wider">
+                    {language === "vi" ? "Mô tả dự án" : language === "en" ? "Project Description" : "ការពិពណ៌នាគម្រោង"}
+                  </h4>
+                  <p className="text-sm text-slate-650 dark:text-slate-400 leading-relaxed font-normal">{selectedProject.description}</p>
+                </div>
+
+                {/* Bidding & Contract value Highlight Box */}
+                {(selectedProject.details.contractPrice || selectedProject.details.biddingEligibility) && (
+                  <div className="p-5 bg-[#EBF1FF]/40 dark:bg-blue-950/20 border border-blue-100/50 dark:border-blue-900/50 rounded-2xl grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {selectedProject.details.contractPrice && (
+                      <div>
+                        <div className="text-[10px] text-blue-600 dark:text-blue-400 font-bold uppercase tracking-wider">
+                          {language === "vi" ? "Giá trị hợp đồng" : language === "en" ? "Contract Price" : "តម្លៃកិច្ចសន្យា"}
+                        </div>
+                        <div className="text-sm text-slate-850 dark:text-white font-extrabold mt-1">{selectedProject.details.contractPrice}</div>
+                      </div>
+                    )}
+                    {selectedProject.details.biddingEligibility && (
+                      <div>
+                        <div className="text-[10px] text-blue-600 dark:text-blue-400 font-bold uppercase tracking-wider">
+                          {language === "vi" ? "Tư cách đấu thầu" : language === "en" ? "Bidding Eligibility" : "សមត្ថភាពລົດ"}
+                        </div>
+                        <div className="text-sm text-slate-855 dark:text-white font-extrabold mt-1">{selectedProject.details.biddingEligibility}</div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Work Summary */}
+                <div className="space-y-2 p-5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-2xl">
+                  <h4 className="text-[10px] text-emerald-600 font-bold uppercase tracking-wider">
+                    {language === "vi" ? "Công việc thực hiện" : language === "en" ? "Work Summary" : "សັງຂេບການງານ"}
+                  </h4>
+                  <p className="text-sm text-slate-650 dark:text-slate-400 leading-relaxed font-normal">{selectedProject.details.workSummary}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
 
       <Footer />
